@@ -1,0 +1,490 @@
+/*Start Variables*/
+:root{
+    --main-color :#5dd9cc;
+    --second-color:#2c4755 ;
+    --section-padding:60px;
+    --section-color:#fafafa;
+    --paragraph-color:#777;
+    --transition-duration:0.3s;
+}
+
+/*End Variables*/
+
+/*Start global roles*/
+
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+html{
+ scroll-behavior: smooth;
+}
+body{
+    font-family: "Work Sans" , sans-serif;
+}
+/*End global roles*/
+ /* start component */
+ /* العناصر اللي بستخدمها كتير */
+ .special-heading{
+    color: #ebeceb;
+    font-size: 100px;
+    text-align: center;
+    font-weight: 800;
+    letter-spacing: -3px;
+    margin: 0;
+ }
+ .special-heading + p{
+    /* البرجراف اللي بعدو عطول */
+    margin: -30px 0 0;
+    text-align: center;
+    color: #797979;
+ }
+ @media (max-width: 767px) {
+    .special-heading{
+        font-size: 60px;
+        margin-top: 40px;
+    }
+ }
+
+ /* end component */
+.container{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*small*/
+
+@media(min-width:768px){
+    .container{
+        width: 750px;
+    }
+}
+/* medium */
+
+@media(min-width:992px){
+    .container{
+        width: 790px;
+    }
+}
+/* large */
+
+@media(min-width:1200px){
+    .container{
+        width: 1170px;
+    }
+}
+/*End global roles*/
+
+/* ..............................................................*/
+
+/* start header */
+.header{
+    padding: 20px;
+}
+.header .container{
+    display: flex; /*بدي اسيب مسافة بين البار  واللوجو */
+    justify-content: space-between;
+    align-items: center; 
+}
+.header .logo{
+    width: 60px;
+}
+.header .link{
+    position: relative;     /* عشان العناصر اللي جزا حعملها ابسلييوت كلها */
+
+}
+.header .link:hover .icon span:nth-child(2) {       /* من اول مالمس الديف تع اللينكس خليلي السبان التانية 100% */
+    width: 100%;
+}
+.header .link .icon{
+    width: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    /* عشان العناصر لما تملا الشاشة تنزل تحت */
+    justify-content: flex-end;
+    /* قلبناها عشقة اليمين كانت معكوسة */
+
+}
+.header .link .icon span{
+    background-color: #333;
+    margin-bottom: 5px; 
+    /* عشان ميلزقوش في بعض */
+}
+.header .link .icon span:first-child{
+    height: 2px;
+    width: 100%; 
+}
+.header .link .icon span:nth-child(2){
+    height: 2px;
+    width: 60%; 
+    transition: var(--transition-duration);
+    /* بدي لما اعمللها هوفر تسير 100% */
+
+}
+.header .link .icon span:nth-child(3){
+    height: 2px;
+    width: 100%; 
+}
+.header .link ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f6f6f6;
+    position: absolute;
+    right: 0;     /* عشان متتطلعش برا الشاشة  */
+    min-width: 200px;
+    top: calc(100% + 15px);
+    /* عشان اخفيه */
+    display: none; 
+    z-index: 1;
+
+}
+ 
+.header .link ul::before{
+    content: "";
+    border-width: 10px;
+    border-style:solid;
+    border-color: transparent transparent #f6f6f6 transparent;
+    position: absolute;
+    right: 5px;
+    top: -20px;
+}
+.header .link:hover ul{
+    display: block;
+}
+.header .link ul li a{
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    color: #333;
+    transition: var(--transition-duration);
+}
+.header .link ul li a:hover{
+    padding-left: 25px;
+}
+ /* عملي بوردر لكل وحدة ما عدا اخر وحدة  */
+.header .link ul li:not(:last-child) a{ 
+    border-bottom: 1px solid #ddd ;
+}
+/* end header */
+/* start landing */
+.landing{
+    background-image:url("/imges/leone-venter-VieM9BdZKFo-unsplash.jpg");
+    background-size: cover;
+    height:calc(100vh - 64px) ;
+    position: relative;
+    
+}
+.landing .intro-text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    width: 320px; /* عشان مخليش البرجراف يتمدد */
+    max-width: 200%;
+}
+.landing .intro-text h1{
+    margin: 0;
+    color:var(--main-color);
+    font-weight: bold;
+    font-size: 45px;
+
+}
+.landing .intro-text p{
+    font-size: 19px;
+    line-height: 1.8;
+}
+/* end landing */
+/* <!-- start feature --> */
+.feature{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color:var(--section-color) ;
+}
+.feature .container{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr)) ;
+   /* حيملا الاعمدة حسب المساحة المتاحة قدامي ببدا من 300 وبعدين النهاية 1فراكشين يعني لو عندي الف فكل الف حيتوزعو عالتلاتةلو 900 حيتوزع برضو عالتلاتة
+   لو 800 واحد منهم حينزل تحت واتنين بياخدو كل المساحة */
+   gap: 20px;
+ }
+ .feature .part{
+    padding: 20px;
+    text-align: center;
+}
+.feature .part i{
+    font-size: 35px;
+    color: var(--main-color);
+    margin:20px 0 ;
+}
+.feature .part h2{
+    font-weight: 800;
+    font-size: 20px;
+}
+.feature .part p{
+    line-height: 1.8;
+    color: var(--paragraph-color);
+    font-size: 17px;
+}
+/* <!-- end feature --> */
+/* start service  */
+.services .services-content{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr)) ;
+    /* width: 50%; */
+    grid-gap: 100px;
+    margin-top: 100px;
+}
+.services .part .image{
+    position: relative;
+    text-align: center;
+}
+.services .services-content .image::before{
+    content: "";
+    width: 100px;
+    height: calc(100% + 100px);
+    background-color: var(--second-color);
+    position: absolute;
+    right: -50px;
+    top:-50px;
+    z-index: -1;
+}
+.services .services-content  .image img{
+    width: 260px;
+
+}
+/* قبل متصير اكبر اشي  */
+@media(max-width:1199px){
+.image-column{
+    display: none;
+}
+}
+
+
+.services .services-content .part{
+    display: flex;
+    margin-bottom: 40px;
+}
+@media (max-width:767px){
+.services .services-content .part{
+    flex-direction: column;
+    text-align: center;
+}
+}
+.services .services-content .part i{
+    color: var(--main-color);
+    flex-basis:60px ;
+    /* عشان لما اروح عالموبايل يتعامل مع الايقونة كطول عرض استخدمتها بدال الwidth */
+    font-size: 25px;
+
+}
+.services .services-content .part .text{
+    flex: 1;
+    /* عشان ياخد باقي المساحة ويسبلي الستين  */
+     
+}
+.services .services-content .part .text h3{
+    margin: 0 0 20px;
+}
+.services .services-content .part .text p{
+    color: #444;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* end service */
+/* <!-- start portfolio --> */
+.portfolio {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color:var(--section-color) ;
+}
+.portfolio .portfolio-content{
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr)) ;
+    grid-gap: 30px;
+    margin-top: 80px;
+
+}
+.portfolio .portfolio-content .part{
+    background-color: white;
+}
+
+.portfolio .portfolio-content  .part img{
+    max-width:100%;
+
+}
+.portfolio .portfolio-content .part .info{
+    padding: 20px;
+}
+.portfolio .portfolio-content .part .info h3{
+    margin: 0;
+}
+.portfolio .portfolio-content .part .info p{
+    color:var(--paragraph-color) ;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+/* <!-- end portfolio --> */
+/* start about */
+.about{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+.about .about-content{
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    /* لو الكونتانت زادت مساحتها تنزول تحت */
+    /* هادي المرة غيرنا صح زي الاول الجريد بس حبينا نغير الطريقة */
+    /* justify-content: space-between; */
+}
+@media(max-width:1199px){
+    .about-content{
+        flex-direction: column;
+        text-align: center;
+        /* margin-bottom: 100px; */
+position: absolute;
+right: 100px;
+    }
+    }
+.about .about-content .image{
+    position: relative;
+    width: 303px;
+    height:416px;
+    z-index:1;
+
+}
+.about .about-content .image img{
+    max-width: 100%;
+}
+@media(max-width:1199px){
+.about .about-content .image{
+     margin: 0 280px 60px;
+}
+}
+
+.about .about-content .image::before{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: calc(100% + 80px);
+    left: -20px;
+    top:-40px;
+    background-color:#ebeceb;
+    z-index:-1 ;
+}
+.about .about-content .image::after{
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 250px;
+    border-left: 80px solid var(--main-color);
+    border-bottom: 80px solid var(--main-color);
+    z-index: -1;
+    right: -150px;
+    top: -25px;
+}
+@media(max-width:1199px){
+    .about .about-content .image::before{
+        display: none;
+    }
+.about .about-content .image::after{
+    display: none;
+
+}
+
+}
+.about .about-content .info{
+    /* flex-basis: calc(100% - 400px); */
+    flex: 1;
+    padding-left: 200px;
+}
+.about .about-content .info p:first-of-type{
+    font-weight:bold;
+    color: #334752;
+    line-height: 2;
+    margin-bottom: 50px;
+}
+.about .about-content .info hr{
+    border-color: var(--main-color);
+    width: 50%;
+    display: inline-block;
+}
+.about .about-content .info p:last-of-type{
+    line-height: 1.8;
+    color: var(--paragraph-color);
+}
+/* end about */
+/* start contact */
+.contact{
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color:var(--section-color) ;
+}
+.contact .contact-content {
+     text-align: center;
+     padding-top: var(--section-padding);
+     padding-bottom: var(--section-padding);
+
+}
+.contact-content .label{
+    color:var(--second-color);
+    font-size: 35px;
+    font-weight: 800;
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+.contact-content .link{
+    color: var(--main-color);
+    display: block;
+    font-size: 35px;
+    font-weight: 800;
+    text-decoration: none;
+}
+.contact-content .cont{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+.contact-content .cont i{
+    margin-left: 10px;
+    color: var(--second-color);
+}
+@media (max-width:767px){
+.contact-content .link
+,
+.contact-content .link{
+    font-size:25px ;
+
+}
+}
+/* end contact */
+/* <!-- start footer --> */
+.footer{
+    text-align: center;
+    background-color: var(--second-color);
+    color: white;
+    padding: 15px 10px;
+    font-size: 18px;
+}
+.footer span{
+    color: var(--main-color);
+    font-weight: bold;
+}
+/* <!-- end footer --> */
+
+
+
+
+
+
+
+
+
+
+
