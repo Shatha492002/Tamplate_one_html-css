@@ -171,7 +171,7 @@ body{
 /* end header */
 /* start landing */
 .landing{
-    background-image:url("/imges/leone-venter-VieM9BdZKFo-unsplash.jpg");
+    background-image:url("/images/sketch.jpg");
     background-size: cover;
     height:calc(100vh - 64px) ;
     position: relative;
